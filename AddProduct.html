@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,39 @@
     <title>Add Products</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div>
         <h1>Add products on Snapdeal</h1>
         <form>
             <label>Product Name</label><br>
-            <input type="text" placeholder="Enter your product name"><br>
+            <input id="proName" type="text" placeholder="Enter your product name"><br>
             <label> Product Imge</label> <br>
-            <input type="url" placeholder="Enter your product url" > <br>
-            <label> Product Title</label> <br>
-            <input type="text" placeholder="Product discrpition">
-        </form>
+            <input id="proImage" type="url" placeholder="Enter your product url"> <br>
+            <label> Product Price</label> <br>
+            <input id="proPrice" type="text" placeholder="Product discrpition"> <br>
+            <button onclick="addToLS()">Submit Product</button>
+        </form> 
     </div>
-    <script src="server.js"></script>
+    <script>
+        function addToLS() {
+
+            var dataFromLs = JSON.parse(localStorage.getItem("userproduct")) || [];
+
+            var userName = document.getElementById("proName").value;
+            var userImage = document.getElementById("proImage").value;
+            var price = document.getElementById("proPrice").value;
+
+            var userproduct = { name: userName, image: userImage, price: price };
+            dataFromLs.push(userproduct);
+
+            localStorage.setItem("userproduct", JSON.stringify(dataFromLs));
+            alert("product Added");
+            var userName = document.getElementById("proName").value = "";
+            var userImage = document.getElementById("proImage").value = "";
+            var price = document.getElementById("proPrice").value = "";
+        }
+    </script>
 </body>
+
 </html>
