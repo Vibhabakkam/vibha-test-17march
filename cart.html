@@ -46,9 +46,10 @@
                     for (var i = 0; i < cartProducts.length; i++) {
                         productsWithHTML += `<div><img src='${cartProducts[i].image}'><br><h1>${cartProducts[i].name}</h1><p>${cartProducts[i].price}</p></div>`;
                     }
+                    divFromHtml.innerHTML = productsWithHTML;
                 }
                 console.log(productsWithHTML);
-                divFromHtml.innerHTML = productsWithHTML;
+                // divFromHtml.innerHTML = productsWithHTML;
 
             }
         };
